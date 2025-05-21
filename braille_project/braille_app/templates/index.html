@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Braille Auto-Correct</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Braille Auto-Correct System</h1>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="braille_input" placeholder="Enter Braille Input, example spplr suggests apple">
+            <button type="submit">Check</button>
+        </form>
+        {% if suggestion %}
+            <div class="result">
+                Suggested Word: <strong>{{ suggestion }}</strong>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
